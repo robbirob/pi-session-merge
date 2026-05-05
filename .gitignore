@@ -1,0 +1,26 @@
+node_modules/
+dist/
+build/
+coverage/
+.nyc_output/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime/temp files
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+
+# Local Pi/project state
+.pi/
+
+# Env files
+.env
+.env.*
+!.env.example
