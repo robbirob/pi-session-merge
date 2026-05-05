@@ -21,7 +21,13 @@ A Pi Coding Agent Extension that adds `/merge`, allowing you to import summarize
 
 Install it as a Pi package so Pi uses the package name instead of showing the extension as `src`.
 
-Install from GitHub:
+Install from npm:
+
+```bash
+pi install npm:pi-session-merge
+```
+
+Or install from GitHub:
 
 ```bash
 pi install git:github.com/robbirob/pi-session-merge
