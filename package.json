@@ -1,15 +1,25 @@
 {
   "name": "pi-session-merge",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pi Coding Agent Extension to import summarized context from another session.",
   "type": "module",
   "main": "./index.ts",
-  "pi": { "extensions": ["./index.ts"] },
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
   "scripts": {
     "test": "node --test --experimental-strip-types test/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
-  "keywords": ["pi-package", "pi", "extension", "session", "merge"],
+  "keywords": [
+    "pi-package",
+    "pi",
+    "extension",
+    "session",
+    "merge"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/robbirob/pi-session-merge.git"
@@ -19,8 +29,15 @@
   },
   "homepage": "https://github.com/robbirob/pi-session-merge#readme",
   "license": "MIT",
-  "files": ["index.ts", "src", "README.md", "LICENSE"],
-  "peerDependencies": { "@mariozechner/pi-coding-agent": "*" },
+  "files": [
+    "index.ts",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*"
+  },
   "devDependencies": {
     "@mariozechner/pi-coding-agent": "*",
     "typescript": "^5.9.3"

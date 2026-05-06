@@ -1,3 +1,6 @@
+import { homedir } from "node:os";
+import { join } from "node:path";
+
 export interface MergeArgs {
   all: boolean;
   cwd?: string;
@@ -16,9 +19,9 @@ export function parseMergeArgs(args: string | undefined): MergeArgs {
     } else if (token === "--cwd") {
       const value = tokens[++i];
       if (!value) throw new Error("/merge --cwd requires a path");
-      out.cwd = value;
+      out.cwd = expandTildePath(value);
     } else if (token.startsWith("--cwd=")) {
-      out.cwd = token.slice("--cwd=".length);
+      out.cwd = expandTildePath(token.slice("--cwd=".length));
     } else if (token.trim()) {
       refs.push(token);
     }
@@ -27,6 +30,14 @@ export function parseMergeArgs(args: string | undefined): MergeArgs {
   if (refs.length > 0) out.sessionRef = refs.join(" ");
   if (out.cwd) out.all = false;
   return out;
+}
+
+export function expandTildePath(pathValue: string, home = homedir()): string {
+  if (pathValue === "~") return home;
+  if (pathValue.startsWith("~/") || pathValue.startsWith("~\\")) {
+    return join(home, pathValue.slice(2));
+  }
+  return pathValue;
 }
 
 function tokenize(input: string): string[] {

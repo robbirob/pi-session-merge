@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseMergeArgs } from "../src/utils/args.ts";
+import { join } from "node:path";
+import { expandTildePath, parseMergeArgs } from "../src/utils/args.ts";
 import { filterAndSortSessions, resolveSessionRef } from "../src/sessions/listSessions.ts";
 import { formatSessionLabel } from "../src/sessions/sessionMetadata.ts";
 import { entriesToTextRecords } from "../src/sessions/extractBranch.ts";
@@ -24,6 +25,12 @@ function session(partial: Partial<SessionInfoLike>): SessionInfoLike {
 test("parseMergeArgs supports all, cwd, and refs", () => {
   assert.deepEqual(parseMergeArgs("--all abc"), { all: true, sessionRef: "abc" });
   assert.deepEqual(parseMergeArgs("--cwd \"/tmp/my project\" foo"), { all: false, cwd: "/tmp/my project", sessionRef: "foo" });
+});
+
+test("expandTildePath expands home-directory shorthand", () => {
+  assert.equal(expandTildePath("~/work/project", "/home/me"), join("/home/me", "work/project"));
+  assert.equal(expandTildePath("~\\work\\project", "C:/Users/me"), join("C:/Users/me", "work\\project"));
+  assert.equal(expandTildePath("/tmp/project", "/home/me"), "/tmp/project");
 });
 
 test("candidate filtering excludes current session and sorts newest first", () => {
