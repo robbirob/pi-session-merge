@@ -1,4 +1,4 @@
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { parseMergeArgs } from "../utils/args.ts";
 import { listCandidateSessions, resolveSessionRef } from "../sessions/listSessions.ts";
 import { showSessionPicker } from "../ui/sessionPicker.ts";

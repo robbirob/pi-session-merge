@@ -8,7 +8,7 @@ export interface ListCandidateOptions {
 }
 
 export async function listCandidateSessions(options: ListCandidateOptions): Promise<SessionInfoLike[]> {
-  const { SessionManager } = await import("@mariozechner/pi-coding-agent");
+  const { SessionManager } = await import("@earendil-works/pi-coding-agent");
   const sessions = options.all
     ? await SessionManager.listAll()
     : await SessionManager.list(options.cwd ?? options.currentCwd);
