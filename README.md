@@ -55,6 +55,32 @@ Useful variants:
 /merge <session-id-or-name-fragment>
 ```
 
+## Troubleshooting
+
+### Windows/npm spawn error during `pi install`
+
+If Pi fails with an error like this while installing or updating the package:
+
+```text
+Error: spawn C:\Program Files\nodejs\npm ENOENT
+```
+
+that is an npm launcher resolution issue in Pi/Node on Windows, not a session-merge runtime error. Configure Pi to call the Windows npm command shim explicitly by adding `npmCommand` to your Pi settings file, for example `~/.pi/agent/settings.json`:
+
+```json
+{
+  "npmCommand": ["C:\\Program Files\\nodejs\\npm.cmd"]
+}
+```
+
+If npm is installed elsewhere, use the path from `where npm` and prefer the `.cmd` entry.
+
+As a temporary workaround for local development, you can also install from a local checkout:
+
+```bash
+pi install /path/to/pi-session-merge
+```
+
 ## How It Works
 
 When `/merge` runs, the extension:

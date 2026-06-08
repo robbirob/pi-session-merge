@@ -79,7 +79,7 @@ export function registerMergeCommand(pi: ExtensionAPI): void {
       if (!confirmed) return;
 
       try {
-        insertImportedContext(ctx.sessionManager, reviewed, {
+        insertImportedContext(pi, reviewed, {
           sourceSessionPath: selected.path,
           sourceSessionId: selected.id,
           sourceCwd: selected.cwd,
