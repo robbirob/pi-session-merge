@@ -1,6 +1,6 @@
 {
   "name": "pi-session-merge",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Pi Coding Agent Extension to import summarized context from another session.",
   "type": "module",
   "main": "./index.ts",
@@ -38,8 +38,13 @@
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*"
   },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    }
+  },
   "devDependencies": {
-    "@earendil-works/pi-coding-agent": "*",
+    "@types/node": "^25.9.3",
     "typescript": "^5.9.3"
   }
 }
